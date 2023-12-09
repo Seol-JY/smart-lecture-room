@@ -93,7 +93,7 @@ int main() {
                     unsigned char fanSpeedDecrease = serialReadByte(fd_serial);
                     printAndFlush("선풍기 세기: %c\n", fanSpeedDecrease);
                     mq_send(mq_fan, (const char*)&fanSpeedDecrease, sizeof(unsigned char), 0);
-                    sprintf(buffer, "i%c", fanSpeedDecrease);
+                    sprintf(buffer, "d%c", fanSpeedDecrease);
                     write(fd_serial, &buffer, strlen(buffer)); //write 함수를 통해 1바이트 씀
                     break;
                 case 'a':
