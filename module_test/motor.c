@@ -15,7 +15,7 @@ void setFanSpeed(unsigned char fanSpeed);
 int main() {
     if (init()) return 1;
 
-	setFanSpeed('30');
+	setFanSpeed('0');
 }
 
 int init() {

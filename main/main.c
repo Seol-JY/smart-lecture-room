@@ -113,7 +113,13 @@ int main() {
                     write(fd_serial, &buffer, strlen(buffer)); //write 함수를 통해 1바이트 씀
                     break;
                 case 'q':
-                    printAndFlush(" - 종료\n");
+                    printAndFlush(" - 연결 해제\n");
+                    unsigned char fanOff = '0';
+                    mq_send(mq_fan, (const char*)&fanOff, sizeof(unsigned char), 0);  // 선풍기 끄기
+                    lightControl(LED_OFF); // 전등 끄기
+                    break;
+                case 'z':
+                    printAndFlush(" - 프로그램 완전 종료\n");
                     isProgramRunning = 0;
                     break;
                 default:
