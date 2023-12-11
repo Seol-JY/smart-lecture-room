@@ -12,16 +12,27 @@ class BluetoothDeviceListEntry extends ListTile {
           onTap: onTap,
           onLongPress: onLongPress,
           enabled: enabled,
-          leading:
-              Icon(Icons.devices), // @TODO . !BluetoothClass! class aware icon
-          title: Text(device.name ?? ""),
-          subtitle: Text(device.address.toString()),
+          leading: Icon(
+            Icons.devices,
+            size: 24,
+          ), // @TODO . !BluetoothClass! class aware icon
+          title: Padding(
+            padding: const EdgeInsets.only(bottom: 4),
+            child: Text(
+              device.name ?? "",
+              style: TextStyle(fontSize: 16.0),
+            ),
+          ),
+          subtitle: Text(
+            device.address.toString(),
+            style: TextStyle(fontSize: 12.0),
+          ),
           trailing: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               rssi != null
                   ? Container(
-                      margin: new EdgeInsets.all(8.0),
+                      margin: new EdgeInsets.all(10.0),
                       child: DefaultTextStyle(
                         style: _computeTextStyle(rssi),
                         child: Column(
@@ -38,7 +49,10 @@ class BluetoothDeviceListEntry extends ListTile {
                   ? Icon(Icons.import_export)
                   : Container(width: 0, height: 0),
               device.isBonded
-                  ? Icon(Icons.link)
+                  ? Icon(
+                      Icons.link,
+                      size: 26,
+                    )
                   : Container(width: 0, height: 0),
             ],
           ),

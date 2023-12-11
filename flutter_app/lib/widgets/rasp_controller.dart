@@ -60,55 +60,80 @@ class FanControlWidget extends RaspberryControlWidget {
 class _FanControlWidgetState extends RaspberryControlWidgetState {
   @override
   Widget buildContent(BuildContext context) {
+    int fanStrengthLevel = BluetoothCommunicationService.fanStrengthLevel;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          "선풍기 현재 단계 : ${BluetoothCommunicationService.fanStrengthLevel}단계",
-          style: const TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w400,
+        Spacer(),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Icon(
+                Icons.air_outlined,
+                color: const Color.fromARGB(255, 95, 95, 95),
+                size: 90,
+              ),
+              Text(
+                fanStrengthLevel == 0 ? "꺼짐" : "$fanStrengthLevel 단계",
+                style: const TextStyle(
+                  fontSize: 20,
+                  color: Color.fromARGB(255, 71, 71, 71),
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              const SizedBox(width: 20),
+              Row(
+                children: [
+                  Spacer(),
+                  Row(
+                      children: List.generate(
+                    4,
+                    (index) => Icon(
+                      index < fanStrengthLevel
+                          ? Icons.circle
+                          : Icons.circle_outlined,
+                      color: Color.fromARGB(255, 126, 126, 126),
+                      size: 30,
+                    ),
+                  )),
+                  Spacer(),
+                ],
+              )
+            ],
           ),
         ),
-        Expanded(
-          child: Center(
-            child: Row(
-              children: [
-                const Text(
-                  "선풍기 세기 제어",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w400,
-                  ),
+        Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () async {
+                  bluetoothService
+                      .decreaseFanLevel()
+                      .then((value) => setState(() {}));
+                },
+                style: ElevatedButton.styleFrom(
+                  minimumSize: const Size(40, 40),
                 ),
-                const Spacer(),
-                ElevatedButton(
+                child: Icon(Icons.remove, size: 20),
+              ),
+              const SizedBox(width: 10),
+              ElevatedButton(
                   onPressed: () async {
                     bluetoothService
                         .increaseFanLevel()
                         .then((value) => setState(() {}));
                   },
                   style: ElevatedButton.styleFrom(
-                    minimumSize: const Size(50, 50), // 정사각형 크기
+                    minimumSize: const Size(40, 40),
                   ),
-                  child: const Text('+', style: TextStyle(fontSize: 20)),
-                ),
-                const SizedBox(width: 10),
-                ElevatedButton(
-                  onPressed: () async {
-                    bluetoothService
-                        .decreaseFanLevel()
-                        .then((value) => setState(() {}));
-                  },
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: const Size(50, 50), // 정사각형 크기
-                  ),
-                  child: const Text('-', style: TextStyle(fontSize: 20)),
-                ),
-              ],
-            ),
+                  child: Icon(Icons.add, size: 20)),
+            ],
           ),
         ),
+        Spacer(),
       ],
     );
   }
@@ -149,20 +174,27 @@ class _AttendCheckControlWidgetState extends RaspberryControlWidgetState {
   Widget showAttendControlWidget(bool isStart, int? attendCheckResult) {
     if (isStart) {
       return Center(
-          child: Row(
+          child: Column(
         children: [
+          const Spacer(),
+          Icon(
+            Icons.people_alt_outlined,
+            color: const Color.fromARGB(255, 95, 95, 95),
+            size: 90,
+          ),
           const Text(
             "출석체크를 수행하시겠습니까?",
-            style: TextStyle(fontSize: 20),
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
           ),
-          const Spacer(),
+          SizedBox(height: 16),
           ElevatedButton(
             onPressed: doAttendCheck,
             style: ElevatedButton.styleFrom(
-              minimumSize: const Size(30, 30), // 정사각형 크기
+              minimumSize: const Size(80, 40), // 정사각형 크기
             ),
-            child: const Text('OK', style: TextStyle(fontSize: 15)),
+            child: const Text('수행', style: TextStyle(fontSize: 18)),
           ),
+          const Spacer(),
         ],
       ));
     }
@@ -172,9 +204,20 @@ class _AttendCheckControlWidgetState extends RaspberryControlWidgetState {
     }
 
     return Center(
-      child: Text(
-        "출석 체크한 인원은 $attendCheckResult명 입니다.",
-        style: const TextStyle(fontSize: 20),
+      child: Column(
+        children: [
+          Spacer(),
+          Icon(
+            Icons.people_alt_outlined,
+            color: const Color.fromARGB(255, 95, 95, 95),
+            size: 90,
+          ),
+          Text(
+            "강의실 총 인원은 $attendCheckResult명 입니다.",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+          ),
+          Spacer(),
+        ],
       ),
     );
   }

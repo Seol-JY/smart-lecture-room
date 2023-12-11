@@ -52,7 +52,7 @@ class BluetoothCommunicationService {
   }
 
   Future<void> disconnect() async {
-    await _sendMessage("s1");
+    await _sendMessage("q");
 
     connection?.close();
   }

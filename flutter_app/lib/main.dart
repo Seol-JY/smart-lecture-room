@@ -9,6 +9,11 @@ class SmartClassApplication extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: MainPage());
+    return MaterialApp(
+        theme: ThemeData(
+          fontFamily: 'SpoqaHanSansNeo',
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: const MainPage());
   }
 }
