@@ -1,3 +1,5 @@
+# 리드미 작성 완료 후 반드시 레포지터리 public 전환할 것
+
 ![image](https://github.com/Seol-JY/smart-lecture-room/assets/70826982/eb2dee9c-7329-414f-8303-a3055cdba7f4)
 ---
 
