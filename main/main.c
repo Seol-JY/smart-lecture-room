@@ -98,7 +98,9 @@ int main() {
                     break;
                 case 'a':
                     printAndFlush(" - 인원수 체크\n");
-                    sprintf(buffer, "a%d", fanSpeedDecrease);
+                    // 여기에 실제 인원수가 들어가야 함
+                    int personCount = 3;
+                    sprintf(buffer, "a%d", personCount);
                     write(fd_serial, &buffer, strlen(buffer)); //write 함수를 통해 1바이트 씀
                     break;
                 case 't':
