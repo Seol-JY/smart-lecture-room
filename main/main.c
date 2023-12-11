@@ -71,7 +71,10 @@ int main() {
         if (serialDataAvail(fd_serial)) { //읽을 데이터가 존재한다면,
 
             mode = serialReadByte(fd_serial);
-            printAndFlush("\n모드: %c", mode);
+            if (mode == '\r' || mode == '\n') {
+                continue;
+            }
+            printAndFlush("\n모드: '%c'", mode);
             switch (mode) {        //버퍼에서 1바이트 값을 읽음
                 case 's':
                     printAndFlush(" - 전등 상태 변경\n");
@@ -85,7 +88,7 @@ int main() {
                     printAndFlush("선풍기 세기: %c\n", fanSpeedIncrease);
                     // queue를 통헤 세기를 보냄
                     mq_send(mq_fan, (const char*)&fanSpeedIncrease, sizeof(unsigned char), 0);
-                    sprintf(buffer, "i%c", fanSpeedIncrease);
+                    sprintf(buffer, "i%c\r", fanSpeedIncrease);
                     write(fd_serial, &buffer, strlen(buffer)); //write 함수를 통해 1바이트 씀
                     break;
                 case 'd':
@@ -93,14 +96,14 @@ int main() {
                     unsigned char fanSpeedDecrease = serialReadByte(fd_serial);
                     printAndFlush("선풍기 세기: %c\n", fanSpeedDecrease);
                     mq_send(mq_fan, (const char*)&fanSpeedDecrease, sizeof(unsigned char), 0);
-                    sprintf(buffer, "d%c", fanSpeedDecrease);
+                    sprintf(buffer, "d%c\r", fanSpeedDecrease);
                     write(fd_serial, &buffer, strlen(buffer)); //write 함수를 통해 1바이트 씀
                     break;
                 case 'a':
                     printAndFlush(" - 인원수 체크\n");
                     // 여기에 실제 인원수가 들어가야 함
                     int personCount = 3;
-                    sprintf(buffer, "a%d", personCount);
+                    sprintf(buffer, "a%d\r", personCount);
                     write(fd_serial, &buffer, strlen(buffer)); //write 함수를 통해 1바이트 씀
                     break;
                 case 't':
@@ -110,7 +113,7 @@ int main() {
                         n = mq_receive(mq_dht, buffer, attr.mq_msgsize, NULL);
                         delay(10);
                     }
-                    sprintf(buffer, "t{%c%c.%c, %c%c.%c}", buffer[1], buffer[2], buffer[3], buffer[4], buffer[5], buffer[6]);
+                    sprintf(buffer, "t{%c%c.%c,%c%c.%c}\r", buffer[4], buffer[5], buffer[6], buffer[1], buffer[2], buffer[3]);
                     printf("%s\n", buffer);
                     write(fd_serial, &buffer, strlen(buffer)); //write 함수를 통해 1바이트 씀
                     break;
@@ -172,7 +175,7 @@ void lightControl(char state) {
         digitalWrite(LED_GPIO, LOW);
         return; 
     }
-    printf("선풍기 세기 조절에 오류 발생!\n");
+    printf("전등 조절에 오류 발생!\n");
 }
 
 void runFanMotorProcess() {
