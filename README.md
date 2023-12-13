@@ -1,57 +1,94 @@
-# 리드미 작성 완료 후 반드시 레포지터리 public 전환할 것
+ 
+# 스마트 강의실 
+## Smart Lecture Room
+#### 임베디드 시스템 기말 프로젝트 - 임베디드 시스템 2분반 3팀
 
-![image](https://github.com/Seol-JY/smart-lecture-room/assets/70826982/eb2dee9c-7329-414f-8303-a3055cdba7f4)
 ---
 
-**Raspberry Pi와 센서 및 엑츄에이터 등을 활용해 ~~~ 프로젝트입니다.**  
-**~~~**
+## 프로젝트 소개 
 
-<br/>
+--- 
 
-## 👬 TEAM 3
+- 스마트 강의실 프로젝트는 앱을 통해 강의실의 센서로 부터 강의실 환경 정보를 읽고, 이를 통해 강의실의 구성요소들을 제어하고자 하는 프로젝트입니다. 
+
+
+- 스마트 강의실 프로젝트의 기능은 다음과 같습니다.
+    
+
+
+
+    1. Bluetooth를 통한 강의실 시스템(라즈베리파이)로의 접속
+    2. 강의실의 전등 제어
+    3. 강의실의 온/습도 측정
+    4. 카메라와 객체탐지 기술을 활용한 자동 출석 체크 기능
+    5. 강의실 선풍기 세기 제어
+--- 
+
+
+## 👬 팀 소개 & 역할 명세
+
+ --- 
+
+- 임베디드 시스템 2분반 3팀
 
 <table>
-  <tr>
-		<td>
+<tr>
+<td>GitHub</td><td>이름</td><td>학번</td><td>역할</td>
+</tr>
+<tr>
+    <td>
         <a href="https://github.com/minturtle">
             <img src="https://avatars.githubusercontent.com/u/57436755?v=4" width="100px" />
         </a>
     </td>
+    <td>김민석</td>
+    <td>20190158</td>
+    <td>
+    - Flutter App 개발<br>
+    - Flutter ⇄ 라즈베리 파이 통신 프로토콜 및 인프라 개발
+    </td>
+</tr>
+<tr>
     <td>    
         <a href="https://github.com/Junad-Park">
             <img src="https://avatars.githubusercontent.com/u/67590577?v=4" width="100px" />
         </a>
     </td>
+    <td>박준하</td>
+    <td></td>
+    <td></td>
+</tr>
+<tr>
     <td>
         <a href="https://github.com/Seol-JY">
             <img src="https://avatars.githubusercontent.com/u/70826982?v=4" width="100px" />
         </a>
     </td>
+    <td>설진영</td>
+    <td>20190602</td>
+    <td></td>
+</tr>
+<tr>
     <td>
         <a href="https://github.com/forever2969">
             <img src="https://avatars.githubusercontent.com/u/57749824?v=4" width="100px" />
         </a>
     </td>
-  </tr>
-  <tr>    
-    <td><b>김민석</b></td>
-    <td><b>박준하</b></td>
-    <td><b>설진영</b></td>
-    <td><b>이태헌</b></td>
-  </tr>
-  <tr>
-    <td>학번입력</td>
-    <td>학번입력</td>
-    <td>20190602</td>
-    <td>학번입력</td>
-  </tr>
+    <td>이태헌</td>
+    <td>20190938</td>
+    <td></td>
+</tr>
+
 </table>
 
-필요시 담당 역할 명세
 
-<br/>
 
-## ❓ How to run?
+--- 
+
+
+## ❓ How to run? 
+
+---
 > 프로그램은 애플리케이션상에서 안전하게 종료하는 것을 권장한다.  
 > sudo 권한이 없다면 필요 프로세스가 생성되지 않아 정상적으로 작동하지 않을 수 있다.  
 #### 클론 및 컴파일  
@@ -66,21 +103,67 @@ $ sudo ./main
   
 ```
 
-<br/>
+--- 
 
-## 🤲🏻 Features
-#### 여기에 기능 제목 입력
+
+## 🤲🏻 Features 
+
+--- 
+
+#### 1. Bluetooth를 통한 강의실 시스템(라즈베리파이)로의 접속
 - 기능상세 설명 #1
 - 기능상세 설명 #2
 
-<br/>
 
-## 🤔 How to use?
-여기에 애플리케이션 사용법 작성
+#### 2. 강의실 전등 제어
+- 기능상세 설명 #1
+- 기능상세 설명 #2
 
-<br/>
+#### 3. 강의실의 온/습도 측정
+- 기능상세 설명 #1
+- 기능상세 설명 #2
+
+#### 4. 카메라와 객체탐지 기술을 활용한 자동 출석 체크 기능
+- 기능상세 설명 #1
+- 기능상세 설명 #2
+
+#### 5. 강의실 선풍기 세기 제어
+- 기능상세 설명 #1
+- 기능상세 설명 #2
+
+--- 
+
+## 🤔 How to use? 
+
+--- 
+
+#### 1. Bluetooth를 통한 강의실 시스템(라즈베리파이)로의 접속
+- 기능상세 설명 #1
+- 기능상세 설명 #2
+
+
+#### 2. 강의실 전등 제어
+- 기능상세 설명 #1
+- 기능상세 설명 #2
+
+#### 3. 강의실의 온/습도 측정
+- 기능상세 설명 #1
+- 기능상세 설명 #2
+
+#### 4. 카메라와 객체탐지 기술을 활용한 자동 출석 체크 기능
+- 기능상세 설명 #1
+- 기능상세 설명 #2
+
+#### 5. 강의실 선풍기 세기 제어
+- 기능상세 설명 #1
+- 기능상세 설명 #2
+
+--- 
 
 ## 📐 Architecture
+
+--- 
+
 ### 하드웨어 설계도
 > Fan Motor의 `VCC` 와 `GND` 방향이 반대로 되어 있으므로 **반드시** 확인할 것.
 > 
@@ -100,5 +183,22 @@ $ sudo ./main
 
 <br/>
 
-## 📤 Communication Specifications
-통신은 ~
+###  📤 Communication Specifications
+- 통신은 모바일 어플리케이션과 라즈베리파이 HC-06 모듈간의 블루투스 기능을 활용하여 해당 프로젝트 내부에서 사용하는 독자적인 프로토콜을 정해 통신하였다.
+- 프로토콜은 "(command)(value)"로 이루어져 있으며, value는 command에 따라 값이 존재하지 않을 수도 있다.
+
+#### 통신 프로토콜
+<table>
+<tr>
+    <td>command</td><td>from</td><td>to</td><td>의미</td><td>예시</td>
+</tr>
+<tr>
+    <td>s</td><td>Application</td><td>Rasberry PI</td>
+    <td>
+        Flutter App에서 강의실의 LED를 제어한다.<br>
+        - Value 0 : LED ON <br>
+        - Value 1 : LED OFF
+    </td>
+    <td>s0</td>
+</tr>
+</table>
