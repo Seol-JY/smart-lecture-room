@@ -52,8 +52,11 @@
         </a>
     </td>
     <td>박준하</td>
-    <td></td>
-    <td></td>
+    <td>20190509</td>
+    <td>
+    - Presentation<br>
+    - Gcloud Vision API를 이용한 출석체크 기능 개발
+    </td>
 </tr>
 <tr>
     <td>
