@@ -71,7 +71,8 @@
     </td>
     <td>이태헌</td>
     <td>20190938</td>
-    <td></td>
+    <td>- 라즈베리파이 블루투스 통신 </br>
+        - 출석체크 기능 테스트 및 통신 </td>
 </tr>
 
 </table>
@@ -183,10 +184,10 @@ $ sudo ./main
 ### 통신 프로토콜
 <table>
 <tr>
-    <td><b>Command</b>b></td><td><b>From</b></td><td><b>To</b></td><td><b>의미</b></td><td><b>예시</b></td>
+    <td><b>Command</b></td><td><b>From</b></td><td><b>To</b></td><td><b>의미</b></td><td><b>예시</b></td>
 </tr>
 <tr>
-    <td>s</td><td>Application</td><td>Rasberry PI</td>
+    <td>s</td><td>Application</td><td>RasPi</td>
     <td>
         Flutter App에서 강의실의 LED를 제어한다.<br>
         - Value 0 : LED ON <br>
@@ -195,7 +196,7 @@ $ sudo ./main
     <td>s0</td>
 </tr>
 <tr>
-     <td>i</td><td>Application</td><td>Rasberry PI</td>
+     <td>i</td><td>Application</td><td>RasPi</td>
     <td>
     Flutter App에서 강의실의 모터의 세기를 증가시킨다.<br>
     단계는 0~4단계 사이로 제어된다.<br>
@@ -204,7 +205,7 @@ $ sudo ./main
     <td>i2</td>
 </tr>
 <tr>
-     <td>i</td><td>Rasberry PI</td><td>Application</td>
+     <td>i</td><td>RasPi</td><td>Application</td>
     <td>
     Rasberry PI에서 강의실의 모터를 증가한 후, 현재 모터의 세기를 App에게 전달한다. <br>
     Rasberry PI 와 APP간의 세기 불일치 문제를 해결하기 위해 사용<br>
@@ -213,7 +214,7 @@ $ sudo ./main
     <td>i2</td>
 </tr>
 <tr>
-     <td>d</td><td>Application</td><td>Rasberry PI</td>
+     <td>d</td><td>Application</td><td>RasPi</td>
     <td>
     Flutter App에서 강의실의 모터의 세기를 감소시킨다.<br>
     단계는 0~4단계 사이로 제어된다.<br>
@@ -222,7 +223,7 @@ $ sudo ./main
     <td>d2</td>
 </tr>
 <tr>
-     <td>d</td><td>Rasberry PI</td><td>Application</td>
+     <td>d</td><td>RasPi</td><td>Application</td>
     <td>
     Rasberry PI에서 강의실의 모터를  감소한 후, 현재 모터의 세기를 App에게 전달한다. <br>
     Rasberry PI 와 APP간의 세기 불일치 문제를 해결하기 위해 사용<br>
@@ -231,14 +232,14 @@ $ sudo ./main
     <td>d2</td>
 </tr>
 <tr>
-     <td>a</td><td>Application</td><td>Rasberry PI</td>
+     <td>a</td><td>Application</td><td>RasPi</td>
     <td>
     Flutter App에서 출석체크를 요청한다.<br>
     </td>
     <td>a</td>
 </tr>
 <tr>
-     <td>a</td><td>Rasberry PI</td><td>Application</td>
+     <td>a</td><td>RasPi</td><td>Application</td>
     <td>
     Rasberry PI에서 출석한 학생의 수를 측정해서 이를 APP에게 응답한다.<br>
     - Value n : 현재 출석한 학생의 수가 n명임을 의미
@@ -246,14 +247,14 @@ $ sudo ./main
     <td>a15</td>
 </tr>
 <tr>
-     <td>t</td><td>Rasberry PI</td><td>Application</td>
+     <td>t</td><td>RasPi</td><td>Application</td>
     <td>
     Flutter APP에서 현재 강의실의 온/습도 정보를 요청한다.
     </td>
     <td>t</td>
 </tr>
 <tr>
-     <td>t</td><td>Rasberry PI</td><td>Application</td>
+     <td>t</td><td>RasPi</td><td>Application</td>
     <td>
     Rasberry PI에서 현재 온/습도를 측정해서 이를 APP에게 응답한다.<br>
     - Value {n1, n2} : 현재 온도가 n1°C, 습도가 n2%임을 의미
