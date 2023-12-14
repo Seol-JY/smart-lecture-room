@@ -13,6 +13,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include <signal.h>  
+#include "src/vision_module.h"
 
 extern char **environ;
 
@@ -101,9 +102,15 @@ int main() {
                     break;
                 case 'a':
                     printAndFlush(" - 인원수 체크\n");
-                    // 여기에 실제 인원수가 들어가야 함
-                    int personCount = 3;
-                    sprintf(buffer, "a%d\r", personCount);
+                    system("raspistill -o images/test.jpg");
+                    const char *imageFilePath = "images/test.jpg";
+
+                    char *base64ImageData = image_to_base64(imageFilePath);
+                    int peopleCount = performVisionAPIRequest(base64ImageData);
+                    if(peopleCount > 50){
+                        peopleCount = 0;
+                    }
+                    sprintf(buffer, "a%d\r", peopleCount);
                     write(fd_serial, &buffer, strlen(buffer)); //write 함수를 통해 1바이트 씀
                     break;
                 case 't':
