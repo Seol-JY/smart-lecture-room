@@ -135,30 +135,10 @@ $ sudo ./main
 <br/>
 
 ## 🤔 How to Use? 
-
-<h2 style="color: red;">TODO:작성 필요</h2>
-
-#### 1. Bluetooth를 통한 강의실 시스템(라즈베리파이)로의 접속
-- 기능상세 설명 #1
-- 기능상세 설명 #2
-
-#### 2. 강의실 전등 제어
-- 기능상세 설명 #1
-- 기능상세 설명 #2
-
-#### 3. 강의실의 온/습도 측정
-- 기능상세 설명 #1
-- 기능상세 설명 #2
-
-#### 4. 카메라와 객체탐지 기술을 활용한 자동 출석 체크 기능
-- 기능상세 설명 #1
-- 기능상세 설명 #2
-
-#### 5. 강의실 선풍기 세기 제어
-- 기능상세 설명 #1
-- 기능상세 설명 #2
+<img width="1639" alt="스크린샷 2023-12-15 오후 8 09 30" src="https://github.com/Seol-JY/smart-lecture-room/assets/70826982/c1facfe0-1b5c-4642-85c3-1ef33ebbc1f9">
 
 <br/>
+<br />
 
 ## 📐 Architecture
 
@@ -175,6 +155,7 @@ $ sudo ./main
 
 <img src="https://github.com/Seol-JY/smart-lecture-room/assets/70826982/ba7b8dbc-1d9c-48e6-9cb4-a3ef24fc2bc4" style="width:95%;" />
 
+<br/>
 
 ### 소프트웨어 구조도
 > `multi-processing`과 `IPC(POSIX Message Queue)`를 사용하여 각 프로세스간에 통신을 진행.
