@@ -4,6 +4,7 @@
 **기말 프로젝트 - 2분반 3팀**  
 <br/>
 
+
 ## 🎉 프로젝트 소개 
 
 - 스마트 강의실 프로젝트는 앱을 통해 강의실의 센서로부터 강의실 환경 정보를 읽고, 이를 통해 강의실의 구성요소들을 제어하고자 하는 프로젝트입니다. 
@@ -85,6 +86,7 @@
 > sudo 권한이 없다면 필요 프로세스가 생성되지 않아 정상적으로 작동하지 않을 수 있다.  
 #### 클론 및 컴파일  
 ```bash
+$ sudo apt-get install libjson-c-dev
 $ git clone https://github.com/Seol-JY/smart-lecture-room.git
 $ cd main
 $ make
@@ -176,9 +178,10 @@ $ sudo ./main
 
 ### 소프트웨어 구조도
 > `multi-processing`과 `IPC(POSIX Message Queue)`를 사용하여 각 프로세스간에 통신을 진행.
-<h2 style="color: red;">TODO:작성 필요</h2>
 
+<img width="1601" alt="스크린샷 2023-12-15 오후 7 33 09" src="https://github.com/Seol-JY/smart-lecture-room/assets/70826982/1f963f9d-0bc8-4fbc-b594-07ee31777dab">
 
+<br/>
 <br/>
 
 ##  📤 Communication Specifications
@@ -266,3 +269,50 @@ $ sudo ./main
     <td>t{25.3,40.5}</td>
 </tr>
 </table>
+
+<br/>
+
+## 🤔 문제점 및 해결방안
+
+#### 1. 블루투스 통신 시 데이터를 정상적으로 읽어들이지 못하는 현상
+> 라즈베리파이에서 데이터 전송 시 애플리케이션에서 정상적으로 인식하지 못하는 현상이 발생. 
+
+- 전송 시에 캐리지 리턴(‘\r’) 기호를 추가해 주는 방식으로 해결.
+- 라즈베리파이에서 데이터를 수신하는 경우에 줄 바꿈 문자 (‘\n’) 및 캐리지 리턴 (’\r’) 을 무시하도록 설정
+``` c
+// main.c
+sprintf(buffer, "d%c\r", fanSpeedDecrease);
+write(fd_serial, &buffer, strlen(buffer));
+...
+if (mode == '\r' || mode == '\n') {
+  continue;
+}
+```
+
+<br/>
+
+#### 2. C언어 상에서 JSON 데이터 파싱에 대한 어려움
+> Google Vision API의 응답형식이 JSON, C언어에서 json 형식의 응답을 분석할 때 어려움을 겪음. 
+
+- json-c 외부 라이브러리를 사용해 데이터 파싱
+``` c
+int performVisionAPIRequest(const char *base64ImageData) {
+  ...
+  json_object_object_add(requestObj, "image", imageObj);
+  ...
+}
+...
+int handleApiResponse(const char *response) {
+  ...
+  if (json_object_object_get_ex(responseItem, "faceAnnotations", &faceAnnotations)) {
+    peopleCount = json_object_array_length(faceAnnotations);
+    ...
+  }
+}
+```
+
+<br/>
+
+## 📹 데모 영상
+
+[![demo](https://img.youtube.com/vi/0umso5RNOMI/hqdefault.jpg)](https://www.youtube.com/watch?v=0umso5RNOMI) 
